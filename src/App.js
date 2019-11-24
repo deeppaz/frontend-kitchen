@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import OrderTableGelen from './components/OrderTableGelen';
+import OrderTableOnaylanan from './components/OrderTableOnaylanan';
+import OrderTableGiden from './components/OrderTableGiden';
 
-function App() {
+const styles = {
+  hrLine: {
+    marginTop: '10%'
+  },
+};
+
+function App(props) {
+  const { classes } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <hr />
+      <h1>Gelen Siparişler</h1>
+      <hr />
+      <OrderTableGelen />
+      <hr className={classes.hrLine}/>
+      <h1>Onaylanan Siparişler</h1>
+      <hr />
+      <OrderTableOnaylanan />
+      
+      <hr className={classes.hrLine}/>
+      <h1>Giden Siparişler</h1>
+      <hr />
+      <OrderTableGiden />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }
 
-export default App;
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+
+export default withStyles(styles)(App);
