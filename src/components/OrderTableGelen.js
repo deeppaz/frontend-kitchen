@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import KullaniciBildirim from './KullaniciBildirim';
+
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,9 +13,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
@@ -23,6 +22,7 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import FilterListIcon from '@material-ui/icons/FilterList';
+
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -164,16 +164,7 @@ const EnhancedTableToolbar = props => {
           {numSelected} Ürün Seçildi
         </Typography> 
       ) : (
-        <Typography className={classes.title} variant="h6" id="tableTitle">
-          Kullanıcıdan Gelen istekler veya Hatalar
-          <Box display="flex">
-            <Box m={2}>
-              <Badge badgeContent={99} color="primary">
-                <MailIcon />
-              </Badge>
-            </Box>
-            </Box>
-        </Typography>
+        <KullaniciBildirim />
       )}
 
       {numSelected > 0 && (
@@ -367,7 +358,7 @@ export default function EnhancedTable() {
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
+        label="Boşlukları Kapat"
       />
     </div>
   );
